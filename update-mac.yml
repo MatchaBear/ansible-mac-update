@@ -1,15 +1,25 @@
 ---
-- name: Update macOS software
+- name: Update macOS software and Homebrew
   hosts: localhost
   connection: local
   gather_facts: false
 
   tasks:
-    - name: Check for available software updates
+    - name: Check for available macOS software updates
       shell: softwareupdate -l
-      register: update_check
+      register: mac_updates
       ignore_errors: yes
 
-    - name: Install all available updates
-      shell: softwareupdate -i -a
-      when: update_check.rc == 0
+    - name: Install all available macOS software updates
+      shell: softwareupdate -i -a >> ~/update_log.txt
+      when: mac_updates.rc == 0
+
+    - name: Update Homebrew
+      shell: brew update >> ~/update_log.txt 2>&1
+
+    - name: Upgrade Homebrew packages
+      shell: brew upgrade >> ~/update_log.txt 2>&1
+
+    - name: Clean up Homebrew cache
+      shell: brew cleanup >> ~/update_log.txt 2>&1
+
