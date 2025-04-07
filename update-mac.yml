@@ -1,0 +1,15 @@
+---
+- name: Update macOS software
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Check for available software updates
+      shell: softwareupdate -l
+      register: update_check
+      ignore_errors: yes
+
+    - name: Install all available updates
+      shell: softwareupdate -i -a
+      when: update_check.rc == 0
