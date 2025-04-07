@@ -27,3 +27,22 @@ This playbook automates the following:
    ```bash
    pip3 install --user ansible
 
+
+
+📦 Requirements
+	•	macOS with Command Line Tools installed
+	•	Homebrew installed
+	•	Python + pip
+	•	Ansible (8.x or higher recommended)
+
+⸻
+
+📄 License
+
+This project is licensed under the MIT License — see the LICENSE file for details.
+
+⸻
+
+🙌 Credits
+
+Built with guidance from ChatGPT and powered by Ansible.
