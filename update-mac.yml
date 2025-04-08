@@ -11,15 +11,14 @@
       ignore_errors: yes
 
     - name: Install all available macOS software updates
-      shell: softwareupdate -i -a >> ~/update_log.txt
+      shell: softwareupdate -i -a >> >> /Users/bermekbukair/update_log.txt
       when: mac_updates.rc == 0
 
     - name: Update Homebrew
-      shell: brew update >> ~/update_log.txt 2>&1
+      shell: brew update >> >> /Users/bermekbukair/update_log.txt 2>&1
 
     - name: Upgrade Homebrew packages
-      shell: brew upgrade >> ~/update_log.txt 2>&1
+      shell: brew upgrade >> >> /Users/bermekbukair/update_log.txt 2>&1
 
     - name: Clean up Homebrew cache
-      shell: brew cleanup >> ~/update_log.txt 2>&1
-
+      shell: brew cleanup >> >> /Users/bermekbukair/update_log.txt 2>&1
